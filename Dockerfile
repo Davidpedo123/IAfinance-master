@@ -1,11 +1,11 @@
 FROM python:3.12-slim
 
-WORKDIR app
+WORKDIR /app
 
-COPY src/app/ app
+COPY src/app/ .
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --upgrade -r app/lib/requirements.txt
 
 
-RUN python3 -m streamlit run main.py
+CMD ["streamlit", "run", "main.py"]
