@@ -1,0 +1,11 @@
+numpy
+pandas
+statsmodels
+scikit-learn
+scikit-learn
+scikit-learn
+tensorflow
+matplotlib
+mplcursors
+streamlit
+plotly

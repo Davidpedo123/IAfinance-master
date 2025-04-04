@@ -1,0 +1,7 @@
+app2/
+docs/
+.env
+diagram.py
+objectivo.md
+*.pyc
+*.md
