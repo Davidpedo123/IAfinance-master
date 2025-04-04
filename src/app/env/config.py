@@ -1,7 +1,7 @@
 import os
 
 API = os.environ.get('API', "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=2S09HBNYQ5UZRPYM")
-key = os.environ['key']
+key = os.environ.get('key', "NWWSH6Y32NF7Z20B")
 
 class url:
     @staticmethod
