@@ -5,7 +5,7 @@ WORKDIR app
 COPY src/app/ app
 
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --upgrade -r lib/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r app/lib/requirements.txt
 
 
 RUN python3 -m streamlit run main.py
