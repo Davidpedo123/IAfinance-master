@@ -9,7 +9,7 @@ async def api (api2):
     
     r = requests.get(api2)
     data = r.json()
-    
+    print(f"Data API: {data}")
     #respuestaIBM.json
     with open("respuestaAUDCAD.json", "w") as f:
         json.dump(data, f, indent=4)
