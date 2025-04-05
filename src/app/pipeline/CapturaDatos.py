@@ -11,12 +11,12 @@ async def api (api2):
     data = r.json()
     
     #respuestaIBM.json
-    with open("respuestaAUDCAD.json", "w") as f:
-        json.dump(data, f, indent=4)
+    #with open("respuestaAUDCAD.json", "w") as f:
+    #    json.dump(data, f, indent=4)
 
-    """with open('respuestaIBM.json', 'r') as f:
-        data = json.load(f)
-    """
+    #with open('respuestaAUDCAD.json', 'r') as f:
+    #    data = json.load(f)
+
     return data
 
 
