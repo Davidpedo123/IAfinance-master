@@ -45,12 +45,12 @@ class MarketStackClient:
         """
         url = self.build_url(limit)
         response = requests.get(url)
-        response.raise_for_status()  # Se puede manejar o propagar la excepción
+        response.raise_for_status()  
         return response.json()
 
-# Ejemplo de uso:
+
 if __name__ == "__main__":
-    # Inyecta la configuración. Estos valores pueden venir, por ejemplo, de variables de entorno o un archivo de configuración.
+    
     config = MarketStackConfig(
         access_key="TU_API_KEY",
         symbols="AAPL",

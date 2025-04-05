@@ -38,18 +38,18 @@ def hybrid_forecast(df, forecast_steps=1, time_steps=6, start_time=None):
     interval_timedelta = pd.to_timedelta(interval)
 
     
-    model_arima = ARIMA(df['close'], order=(2, 1, 2))  # Aumentamos capacidad de capturar variaciones
+    model_arima = ARIMA(df['close'], order=(2, 1, 2))  
     model_arima_fit = model_arima.fit()
     
     df['arima_pred'] = model_arima_fit.predict(start=0, end=len(df)-1, dynamic=False)
     df['arima_resid'] = df['close'] - df['arima_pred']
 
-    # --- Transformación clave: Convertir residuos a pips ---
-    PIP_MULTIPLIER = 10000  # Para 4 decimales
+    
+    PIP_MULTIPLIER = 10000  
     residuals_pips = df['arima_resid'].dropna().values.reshape(-1, 1) * PIP_MULTIPLIER
     
-    # Escalamos los pips para mejor aprendizaje
-    scaler = MinMaxScaler(feature_range=(-1, 1))  # Rango ampliado para variaciones positivas/negativas
+    
+    scaler = MinMaxScaler(feature_range=(-1, 1))  
     residuals_scaled = scaler.fit_transform(residuals_pips)
 
     # --- LSTM ---
@@ -127,7 +127,7 @@ def hybrid_forecast(df, forecast_steps=1, time_steps=6, start_time=None):
         
         pred_decimal = Decimal(str(pred))
         
-        # Calcular márgenes con precisión extendida
+        
         margin = Decimal('0.0005') if forecast_steps <= 3 else Decimal('0.001')
         confidence_adjustment = Decimal('0.0002')
         
@@ -138,10 +138,10 @@ def hybrid_forecast(df, forecast_steps=1, time_steps=6, start_time=None):
             "max": pred_decimal + margin
         }
 
-        # Calcular cambio porcentual con 6 decimales
+        
         change = ((pred_decimal - last_close) / last_close * 100)
         
-        # Intervalo de confianza con alta precisión
+        
         confidence_interval = {
             "lower": pred_decimal - margin - confidence_adjustment,
             "upper": pred_decimal + margin + confidence_adjustment
