@@ -56,4 +56,4 @@ async def model_train(symbol):
 
 ## Con docker
 
-Solo ejecutamos desde la carpeta raiz, `docker build -t {nombre_imagen} .` y ejecutamos el docker run, en el puerto que deseamos el puerto en el que se expone en la imagen es en el `8501` , deberian ejecutar docker run -p `127.0.0.1:8501:8501 {nombre_imagen}` .
+Solo ejecutamos desde la carpeta raiz, `docker build -t {nombre_imagen} .` y ejecutamos el docker run, en el puerto que deseamos el puerto en el que se expone en la imagen es en el `8501` , deberian ejecutar `docker run -p 127.0.0.1:8501:8501 {nombre_imagen}` .
